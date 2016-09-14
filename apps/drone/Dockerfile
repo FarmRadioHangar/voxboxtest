@@ -1,4 +1,4 @@
-FROM resin/raspberrrypi-golang:1.7-wheezy
+FROM resin/raspberrypi-golang:1.7-wheezy
 
 
 ENV GOPATH /go
