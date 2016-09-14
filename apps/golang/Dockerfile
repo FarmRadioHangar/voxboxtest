@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian:jessie
+FROM resin/raspberrypi3-debian
 
 
 # Install dependencies
