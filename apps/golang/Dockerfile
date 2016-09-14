@@ -44,3 +44,4 @@ WORKDIR $GOPATH
 # Define working directory
 WORKDIR $GOPATH
 
+CMD ["bash"]
