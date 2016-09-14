@@ -20,7 +20,7 @@ services:
             - transmission:rw
         ports:
             - 80:80
-    golang:
-      build: golang
+    drone:
+      build: drone
 
 
