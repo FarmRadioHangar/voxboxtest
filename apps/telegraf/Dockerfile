@@ -1,4 +1,3 @@
-COPY entrypoint.sh /entrypoint.sh
 FROM resin/raspberrypi-golang:1.6
 
 
@@ -11,5 +10,6 @@ RUN git clone git://github.com/influxdata/telegraf.git $GOPATH/src/github.com/in
  && go get -v\
  && go install ./cmd/telegraf
 
+COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["$GOPATH/bin/telegraf"]
