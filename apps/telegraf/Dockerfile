@@ -1,17 +1,15 @@
-FROM resin/raspberrypi3-debian
-
-RUN apt-get update && apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl
-
-RUN curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add - \
- && source /etc/os-release \
- && test $VERSION_ID = "7" && echo "deb https://repos.influxdata.com/debian wheezy stable" | sudo tee /etc/apt/sources.list.d/influxdb.list \
- && test $VERSION_ID = "8" && echo "deb https://repos.influxdata.com/debian jessie stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-
-RUN apt-get update && apt-get install telegraf
-
 COPY entrypoint.sh /entrypoint.sh
+FROM resin/raspberrypi-golang:1.6
+
+
+ENV GOPATH /go
+
+ENV GO15VENDOREXPERIMENT 1
+
+RUN git clone git://github.com/influxdata/telegraf.git $GOPATH/src/github.com/influxdata/telegraf \
+ && cd $GOPATH/src/github.com/influxdata/telegraf \
+ && go get -v\
+ && go install ./cmd/telegraf
+
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["telegraf"]
+CMD ["$GOPATH/bin/telegraf"]
