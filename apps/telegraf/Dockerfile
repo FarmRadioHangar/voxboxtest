@@ -6,7 +6,7 @@ ENV GOPATH /go
 
 RUN  go get -v github.com/influxdata/telegraf \
  && cd $GOPATH/src/github.com/influxdata/telegraf \
- && make build
+ && make
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
