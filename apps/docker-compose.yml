@@ -6,10 +6,13 @@ services:
       env_file:
         - ./dronerc.env
       ports:
-        - 80:8000
+        - 80000:8000
       volumes:
         - /data/drone:/var/lib/drone
         - /var/run/docker:/var/run/docker
-
+    fessbox-ui:
+      build: static
+      ports:
+        - 80:80
 
 
