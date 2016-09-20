@@ -1,8 +1,5 @@
 version: '2'
 
-volumes:
-    downloads:
-    transmission-config:
 
 services:
     drone:
@@ -11,6 +8,8 @@ services:
         - ./dronerc.env
       ports:
         - 80:80
+      volumes:
+        - /data/drone:/var/lib/drone
 
 
 
