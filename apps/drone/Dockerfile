@@ -11,5 +11,5 @@ RUN git clone git://github.com/drone/drone.git $GOPATH/src/github.com/drone/dron
  && make gen \
  && make build_static
 
-ENTRYPOINT ['$GOPATH/bin/drone']
+ENTRYPOINT ["/go/bin/drone"]
 CMD ["server"]
