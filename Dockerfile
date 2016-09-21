@@ -31,5 +31,4 @@ COPY ./wrapdocker.service /etc/systemd/system/wrapdocker.service
 RUN systemctl enable wrapdocker.service
 RUN systemctl enable voxbox.service
 
-CMD [“/usr/sbin/init”]
-
+CMD mount -o bind /data /var/lib/docker
