@@ -22,6 +22,8 @@ RUN chmod +x /usr/local/bin/wrapdocker
 
 COPY ./apps /apps
 
+WORKDIR /apps
+
 COPY ./start /start
 RUN chmod +x /start
 
