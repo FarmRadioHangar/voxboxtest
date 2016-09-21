@@ -2,3 +2,8 @@
 
 mount -o bind /data /var/lib/docker
 
+# Start docker and services
+if ! docker info &>/dev/null; then
+	wrapdocker echo
+fi
+
