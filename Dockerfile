@@ -10,12 +10,14 @@ RUN apt-get update && apt-get install -y \
     curl \
     lxc \
     iptables
-    
+
 # Install Docker from hypriot repos
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 37BBEE3F7AD95B3F && \
     echo "deb https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy main" > /etc/apt/sources.list.d/hypriot.list && \
     apt-get update && \
     apt-get install -y docker-hypriot docker-compose
+
+VOLUME [ "/sys/fs/cgroup", "/var/lib/docker" ]
 
 COPY ./wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
@@ -26,8 +28,8 @@ COPY ./voxbox.service /etc/systemd/system/voxbox.servic
 
 COPY ./wrapdocker.service /etc/systemd/system/wrapdocker.servic
 
-# Define additional metadata for our image.
-VOLUME /var/lib/docker
+RUN systemctl enable wrapdocker.service
+RUN systemctl enable voxbox.service
 
 CMD [“/usr/sbin/init”]
 
