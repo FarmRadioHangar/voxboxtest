@@ -1,6 +1,8 @@
 FROM resin/raspberrypi3-debian
 MAINTAINER justin@dray.be
 
+ENV INITSYSTEM on
+
 # Let's start with some basic stuff.
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
@@ -16,11 +18,16 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 37BBEE3F7AD95B3F &&
     apt-get install -y docker-hypriot docker-compose
 
 COPY ./wrapdocker /usr/local/bin/wrapdocker
+RUN chmod +x /usr/local/bin/wrapdocker
 
 COPY ./apps /apps
-WORKDIR /apps
+
+COPY ./voxbox.service /etc/systemd/system/voxbox.servic
 
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
-ADD start /start
-CMD /start
+RUN systemd enable wrapdocker.service
+RUN systemd enable voxbox.service
+
+CMD [“/usr/sbin/init”]
+

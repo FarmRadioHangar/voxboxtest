@@ -1,0 +1,13 @@
+[Unit]
+Description=wrapdocker
+# Requires=basic.target
+# After=basic.target
+Type=idle
+
+[Service]
+Type=oneshot
+ExecStart= /usr/local/bin/wrapdocker
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
