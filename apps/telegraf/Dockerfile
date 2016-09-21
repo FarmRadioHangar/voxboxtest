@@ -1,5 +1,11 @@
 FROM resin/raspberrypi3-debian
 
+RUN apt-get update && apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    wget\
+    lxc \
+    iptables
 ENV TELEGRAF telegraf_1.0.0_armhf.deb
 
 RUN  wget https://dl.influxdata.com/telegraf/releases/$TELEGRAF \
