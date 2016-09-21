@@ -5,6 +5,7 @@ Description=wraps docker
 Type=oneshot
 ExecStart= /usr/local/bin/wrapdocker
 RemainAfterExit=yes
+User=root
 
 [Install]
 WantedBy=multi-user.target

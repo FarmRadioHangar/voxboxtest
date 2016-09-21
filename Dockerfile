@@ -28,8 +28,8 @@ COPY ./voxbox.service /etc/systemd/system/voxbox.service
 
 COPY ./wrapdocker.service /etc/systemd/system/wrapdocker.service
 
-RUN systemctl disable docker
 
+RUN systemctl enable wrapdocker.service
 RUN systemctl enable voxbox.service
 
 COPY ./start /start

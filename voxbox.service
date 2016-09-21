@@ -8,6 +8,7 @@ After=wrapdocker.service
 Restart=always
 ExecStart=/usr/local/bin/docker-compose -f /apps/docker-compose.yml up
 ExecStop=/usr/local/bin/docker-compose -f /apps/docker-compose.yml stop
+User=root
 
 [Install]
 WantedBy=multi-user.target
