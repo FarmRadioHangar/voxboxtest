@@ -7,4 +7,4 @@ ExecStart= /usr/local/bin/wrapdocker
 RemainAfterExit=yes
 
 [Install]
-WantedBy=local.target
+WantedBy=multi-user.target
