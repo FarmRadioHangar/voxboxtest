@@ -1,7 +1,7 @@
 [Unit]
 Description= Voxbox service
-Requires=docker.service
-After=docker.service
+Requires=wrapdocker.service
+After=wrapdocker.service
 
 [Service]
 Restart=always
