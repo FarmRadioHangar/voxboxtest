@@ -17,7 +17,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 37BBEE3F7AD95B3F &&
     apt-get update && \
     apt-get install -y docker-hypriot docker-compose
 
-VOLUME [ "/sys/fs/cgroup", "/var/lib/docker" ]
+VOLUME [ "/var/lib/docker" ]
 
 COPY ./wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
@@ -28,7 +28,6 @@ COPY ./voxbox.service /etc/systemd/system/voxbox.service
 
 COPY ./wrapdocker.service /etc/systemd/system/wrapdocker.service
 
-RUN systemctl enable wrapdocker.service
 RUN systemctl enable voxbox.service
 
 COPY ./start /start

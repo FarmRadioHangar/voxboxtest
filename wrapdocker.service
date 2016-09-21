@@ -1,5 +1,5 @@
 [Unit]
-Description=wrapdocker
+Description=wraps docker
 
 [Service]
 Type=oneshot
