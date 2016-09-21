@@ -26,8 +26,6 @@ COPY ./voxbox.service /etc/systemd/system/voxbox.servic
 
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
-RUN systemd enable wrapdocker.service
-RUN systemd enable voxbox.service
 
 CMD [“/usr/sbin/init”]
 
