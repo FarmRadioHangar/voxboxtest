@@ -24,6 +24,10 @@ COPY ./apps /apps
 
 COPY ./voxbox.service /etc/systemd/system/voxbox.servic
 
+COPY ./wrapdocker.service /etc/systemd/system/wrapdocker.servic
+
+RUN systemctl enable wrapdocker
+
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
 
