@@ -14,5 +14,13 @@ services:
       build: static
       ports:
         - 80:80
+    telegraf:
+      build: telegraf
+      ports:
+        - 8125/udp:8125/udp
+        - 8092/udp:8092/udp
+        - 8094:8094
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
 
 
