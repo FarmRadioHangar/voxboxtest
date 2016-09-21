@@ -24,9 +24,9 @@ RUN chmod +x /usr/local/bin/wrapdocker
 
 COPY ./apps /apps
 
-COPY ./voxbox.service /etc/systemd/system/voxbox.servic
+COPY ./voxbox.service /etc/systemd/system/voxbox.service
 
-COPY ./wrapdocker.service /etc/systemd/system/wrapdocker.servic
+COPY ./wrapdocker.service /etc/systemd/system/wrapdocker.service
 
 RUN systemctl enable wrapdocker.service
 RUN systemctl enable voxbox.service
