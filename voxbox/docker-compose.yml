@@ -5,6 +5,14 @@ services:
       build: static
       ports:
         - 80:80
+    fconf:
+      build: fconf
+      ports:
+        - 8080:8080
+      priviledged: ture
+      volumes:
+        - /dev:/dev
+
     telegraf:
       build: telegraf
       ports:
