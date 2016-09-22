@@ -4,3 +4,4 @@
 
  - telegraf
  - material ui frontend
+ - fconf
