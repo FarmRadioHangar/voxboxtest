@@ -12,6 +12,7 @@ services:
       privileged: true
       volumes:
         - /dev:/dev
+      network_mode: "host"
 
     telegraf:
       build: telegraf
