@@ -6,7 +6,7 @@ ENV GOPATH /go
 # Let's start with some basic stuff.
 RUN apt-get update && apt-get install -y \
     libudev-dev\
-	&& rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/lib/apt/lists/*
 
 RUN go get  -v github.com/FarmRadioHangar/fessboxconfig/... \
  && cd $GOPATH/github.com/FarmRadioHangar/fessboxconfig \
