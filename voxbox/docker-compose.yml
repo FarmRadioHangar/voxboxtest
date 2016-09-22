@@ -9,7 +9,7 @@ services:
       build: fconf
       ports:
         - 8080:8080
-      privileged: ture
+      privileged: true
       volumes:
         - /dev:/dev
 
