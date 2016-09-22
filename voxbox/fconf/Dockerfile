@@ -9,5 +9,6 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["fconf","-c","/etc/fconf/fconf.json"]
+#CMD ["fconf","-c","/etc/fconf/fconf.json"]
+CMD ["udevadm","monitor"]
 
