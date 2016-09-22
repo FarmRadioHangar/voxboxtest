@@ -20,9 +20,9 @@ VOLUME ["/var/lib/docker" ]
 COPY ./wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
 
-COPY ./apps /apps
+COPY ./voxbox /voxbox
 
-WORKDIR /apps
+WORKDIR /voxbox
 
 COPY ./start /start
 RUN chmod +x /start
