@@ -10,6 +10,7 @@ services:
       ports:
         - 8080:8080
       priviledged: ture
+      restart: always
       volumes:
         - /dev:/dev
 
