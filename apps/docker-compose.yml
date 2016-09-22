@@ -1,15 +1,6 @@
 version: '2'
 
 services:
-    drone:
-      build: drone
-      env_file:
-        - ./dronerc.env
-      ports:
-        - 8000:8000
-      volumes:
-        - /data/drone:/var/lib/drone
-        - /var/run/docker:/var/run/docker
     static:
       build: static
       ports:
