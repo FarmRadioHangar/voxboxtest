@@ -9,14 +9,16 @@ RUN apt-get update && apt-get install -y \
   && rm -rf /var/lib/apt/lists/*
 
 RUN go get  -v github.com/FarmRadioHangar/fessboxconfig/... \
- && cd $GOPATH/github.com/FarmRadioHangar/fessboxconfig \
- && make \
- && cp ./fconf /usr/bin \
+ && cd $GOPATH/github.com/FarmRadioHangar/fessboxconfig
+
+
+WORKDIR $GOPATH/github.com/FarmRadioHangar/fessboxconfig
+
+RUN go build -o fconf
+
+ RUN  cp ./fconf /usr/bin \
  && mkdir /etc/fconf \
- && cp ./etc/fconf.json /etc/fconf/fconf.json\
- && rm -rf $GOPATH/src\
- && rm -rf $GOPATH/pkg\
- && rm -rf $GOPATH/bin
+ && cp ./etc/fconf.json /etc/fconf/fconf.json
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
