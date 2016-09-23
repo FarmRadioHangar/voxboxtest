@@ -23,8 +23,21 @@ RUN apt-get update && apt-get install -y \
 	&& rm -rf /var/lib/apt/lists/*
 
 
-
 WORKDIR /tmp
+# Get pj project
+RUN git clone -b pjproject-2.4.5 --depth 1 https://github.com/asterisk/pjproject.git
+
+# Build pj project
+WORKDIR /tmp/pjproject
+RUN ./configure
+RUN make dep
+RUN make
+RUN make install
+RUN ldconfig
+RUN ldconfig -p | grep pj
+
+
+# get asterisk
 RUN git clone -b certified/13.8 --depth 1 https://gerrit.asterisk.org/asterisk
 
 #installation asterisk
