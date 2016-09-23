@@ -8,9 +8,9 @@ voxbox on resin.io
   - [ ] [installation](#installation)
   - [ ] [how it works](#how it works)
 - [ ] [components](#components)
-  - [ ] [fconf](#fconf)
-  - [ ] [telegraf](#telegraf)
-  - [ ] [frontend](#frontend)
+  - [x] [fconf](#fconf)
+  - [x] [telegraf](#telegraf)
+  - [x] [frontend](#frontend)
   - [ ] [backend](#backend)
   - [ ] [asterisk](#asterisk)
 
