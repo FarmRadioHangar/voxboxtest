@@ -2,15 +2,6 @@ FROM  resin/raspberrypi3-debian
 MAINTAINER Geofrey Ernest <gernest@farmradio.org>
 
 
-# Creates the user under which asterisk will run
-
-ENV ASTERISKUSER vampire
-ENV ASTERISKVER 13.2.0
-
-RUN groupadd -r $ASTERISKUSER && useradd -r -g $ASTERISKUSER $ASTERISKUSER \
-	&& mkdir /var/lib/asterisk && chown $ASTERISKUSER:$ASTERISKUSER /var/lib/asterisk \
-	&& usermod --home /var/lib/asterisk $ASTERISKUSER
-
 # grab gosu for easy step-down from root
 RUN apt-get update && apt-get install -y \
 	git \
