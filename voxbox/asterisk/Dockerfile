@@ -45,7 +45,7 @@ RUN apt-get update && apt-get install -y php5 php5-json php5-curl \
 	&& tar xvzf download \
 	&& mv phpagi-2.20/* /var/lib/asterisk/agi-bin/  \
  	&& chmod ugo+x /var/lib/asterisk/agi-bin/*.php
- 	
+
  #necessary files and package for google tts
  # sox - google tts agi - mpg 123
  RUN apt-get install -y sox mpg123 libwww-perl  \
@@ -59,14 +59,14 @@ RUN chown -R $ASTERISKUSER:$ASTERISKUSER /var/lib/asterisk \
 	&& chown -R $ASTERISKUSER:$ASTERISKUSER /var/log/asterisk \
 	&& chown -R $ASTERISKUSER:$ASTERISKUSER /var/run/asterisk \
 	&& chown -R $ASTERISKUSER:$ASTERISKUSER /etc/asterisk
- 
+
 #Expose outside volumes
 VOLUME /var/log/asterisk
 VOLUME /etc/asterisk
 VOLUME /var/lib/asterisk
 
 #Copy minimum configuration files so that it can start
-COPY etc/etc/* /etc/asterisk/
+COPY etc/* /etc/asterisk/
 
 #Make asterisk port open
 EXPOSE 5060
