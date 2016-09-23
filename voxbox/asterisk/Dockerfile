@@ -20,11 +20,9 @@ RUN apt-get update && apt-get install -y \
 	mpg123 \
 	libwww-perl\
 	wget\
-	&& rm -rf /var/lib/apt/lists/* \
+	&& rm -rf /var/lib/apt/lists/*
 
 
-
-# Getting the sources
 
 WORKDIR /tmp
 RUN git clone -b certified/13.8 --depth 1 https://gerrit.asterisk.org/asterisk
