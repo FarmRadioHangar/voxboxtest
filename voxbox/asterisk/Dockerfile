@@ -5,7 +5,7 @@ MAINTAINER Geofrey Ernest <gernest@farmradio.org>
 # grab gosu for easy step-down from root
 RUN apt-get update && apt-get install -y \
 	git \
-    uuid-dev \
+	uuid-dev \
 	build-essential \
 	libxml2-dev \
 	libncurses5-dev \
