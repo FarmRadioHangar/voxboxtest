@@ -4,9 +4,9 @@ voxbox on resin.io
 
 # Table of contents
 - [ ] [Introduction]()
-  - [ ] [overview](#overview)
-  - [ ] [installation](#installation)
-  - [ ] [how it works](#how it works)
+  - [x] [overview](#overview)
+  - [x] [installation](#installation)
+  - [x] [how it works](#how it works)
 - [ ] [components](#components)
   - [x] [fconf](#fconf)
   - [x] [telegraf](#telegraf)
