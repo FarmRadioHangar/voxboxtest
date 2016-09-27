@@ -75,4 +75,5 @@ WORKDIR /
 COPY etc/* /etc/asterisk/
 
 #Start Asterisk in foreground
-CMD ["asterisk","-f"]
+#CMD ["asterisk","-f"]
+CMD sudo asterisk -f
