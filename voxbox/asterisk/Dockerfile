@@ -53,7 +53,7 @@ RUN  menuselect/menuselect --disable BUILD_NATIVE \
   chan_alsa \
   menuselect/menuselect.makeopts
 
-RUN  make && make install && make config
+RUN  make && make install && make config && make samples
 
 
 WORKDIR /tmp
@@ -72,7 +72,7 @@ VOLUME /var/lib/asterisk
 WORKDIR /
 
 #Copy minimum configuration files so that it can start
-COPY etc/* /etc/asterisk/
+#COPY etc/* /etc/asterisk/
 
 #Start Asterisk in foreground
 #CMD ["asterisk","-f"]
