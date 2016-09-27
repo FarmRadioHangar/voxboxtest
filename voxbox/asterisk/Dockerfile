@@ -34,7 +34,6 @@ RUN make dep
 RUN make
 RUN make install
 RUN ldconfig
-RUN ldconfig -p | grep pj
 
 
 # get asterisk
