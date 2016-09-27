@@ -1,6 +1,9 @@
 FROM  resin/raspberrypi3-debian
 MAINTAINER Geofrey Ernest <gernest@farmradio.org>
 
+ENV ASTERISKUSER pbxrunner
+RUN groupadd -r $ASTERISKUSER && useradd -r $ASTERISKUSER \
+  && usermod -aG $ASTERISKUSER $USER
 
 # grab gosu for easy step-down from root
 RUN apt-get update && apt-get install -y \
