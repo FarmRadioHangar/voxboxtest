@@ -50,7 +50,12 @@ RUN  ./configure
 RUN  cd menuselect && make menuselect && cd .. & make menuselect-tree
 RUN  menuselect/menuselect --disable BUILD_NATIVE \
   --enable streamplayer \
-  chan_alsa \
+  --enable chan_alsa \
+  --enable chan_sip\
+  --enable res_snmp\
+  --enable res_http_websocket\
+  --enable res_hep_pjsip\
+  --enable res_hep_rtcp\
   menuselect/menuselect.makeopts
 
 RUN  make && make install && make config && make samples
