@@ -37,6 +37,7 @@ RUN ldconfig
 
 
 # get asterisk
+WORKDIR /tmp
 RUN git clone -b certified/13.8 --depth 1 https://gerrit.asterisk.org/asterisk
 
 #installation asterisk
