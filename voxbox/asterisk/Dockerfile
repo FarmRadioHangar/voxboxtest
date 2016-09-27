@@ -64,10 +64,10 @@ RUN  wget http://sourceforge.net/projects/phpagi/files/latest/download \
  	&& chmod ugo+x /var/lib/asterisk/agi-bin/*.php\
 	&& rm -f download
 
-#Expose outside volumes
-VOLUME /var/log/asterisk
-VOLUME /etc/asterisk
-VOLUME /var/lib/asterisk
+##Expose outside volumes
+#VOLUME /var/log/asterisk
+#VOLUME /etc/asterisk
+#VOLUME /var/lib/asterisk
 
 WORKDIR /
 

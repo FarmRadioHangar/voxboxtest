@@ -18,7 +18,9 @@ services:
       privileged: true
       network_mode: "host"
       volumes:
-        - /data/asterisk:/var/lib/asterisk
+        - /data/asterisk/lib:/var/lib/asterisk
+        - /data/asterisk/log:/var/log/asterisk
+        - /data/asterisk/etc:/etc/asterisk
     telegraf:
       build: telegraf
       ports:
