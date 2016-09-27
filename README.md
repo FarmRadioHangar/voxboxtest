@@ -50,3 +50,18 @@ it is not a good idea to use docker compose in production. But `docker-compose`
 is the best tool for this kind of problem. In the future, maybe systemd can be
 used to replace `docker-compose`
 
+
+# Components
+
+## fconf
+This is used for configuring devices, and other stuffs that are necessary for
+running voxbox. It is a golang application that relies on c bindings for
+lib-udev . For some reasons, this doesn't compile from source as there are
+odifications needed for one of the go libraries to make it work.
+
+So, fconf binary is included in this project at `/voxbox/fconf/fconf` . The
+service runs on port `8090`
+
+Configuration for the service is mounted on `/etc/fconf/fconf.json` . So any
+updates on configuration can be done there, this will require restarting of the
+container.
