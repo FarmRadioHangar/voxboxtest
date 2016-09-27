@@ -48,7 +48,11 @@ RUN git clone -b certified/13.8 --depth 1 https://gerrit.asterisk.org/asterisk
 WORKDIR /tmp/asterisk
 RUN  ./configure
 RUN  cd menuselect && make menuselect && cd .. & make menuselect-tree
-RUN  menuselect/menuselect --disable BUILD_NATIVE menuselect/menuselect.makeopts 
+RUN  menuselect/menuselect --disable BUILD_NATIVE \
+  --enable streamplayer \
+  chan_alsa \
+  menuselect/menuselect.makeopts
+
 RUN  make && make install && make config
 
 
