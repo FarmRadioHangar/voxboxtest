@@ -65,3 +65,15 @@ service runs on port `8090`
 Configuration for the service is mounted on `/etc/fconf/fconf.json` . So any
 updates on configuration can be done there, this will require restarting of the
 container.
+
+## asterisk
+Asterisk version 13.8 with  pjproject 2.4.5
+ The following modules are enabled
+- streamplayer
+- chan_alsa
+- chan_sip
+- res_snmp
+- res_http_websocket
+- res_hep_pjsip
+- res_hep_rtcp
+
