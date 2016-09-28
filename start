@@ -24,8 +24,8 @@ docker rmi $(docker images -f "dangling=true" -q 2>/dev/null) &>/dev/null || :
 docker-compose down || :
 docker-compose up &
 
-set +x
-while true; do
-	sleep 5m
-	keep_alive
-done
+#set +x
+#while true; do
+	#sleep 5m
+	#keep_alive
+#done
