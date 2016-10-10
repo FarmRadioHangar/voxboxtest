@@ -1,7 +1,7 @@
 FROM  resin/raspberrypi3-debian
 MAINTAINER Geofrey Ernest <gernest@farmradio.org>
 
-ENV ASTERISKUSER pbxrunner
+ENV ASTERISKUSER asterisk
 
 RUN groupadd -r $ASTERISKUSER && useradd -r -g $ASTERISKUSER $ASTERISKUSER \
   && usermod -aG sudo $ASTERISKUSER
@@ -15,7 +15,11 @@ RUN apt-get update && apt-get install -y \
 	libncurses5-dev \
 	libsqlite3-dev \
 	libssl-dev \
-	libxslt-dev \
+  libasound-dev\
+  alsa-base\
+  alsa-utils\
+  jackd\
+  libjack0\
 	libjansson-dev\
 	php5 \
 	php5-json \
@@ -25,6 +29,17 @@ RUN apt-get update && apt-get install -y \
 	libwww-perl\
 	wget\
 	&& rm -rf /var/lib/apt/lists/*
+
+
+# install port audio
+
+WORKDIR /tmp
+RUN git clone  https://git.assembla.com/portaudio.git
+WORKDIR /tmp/portaudio
+RUN ./configure
+RUN make
+RUN make install
+RUN ldconfig
 
 
 WORKDIR /tmp
@@ -51,6 +66,7 @@ RUN  cd menuselect && make menuselect && cd .. & make menuselect-tree
 RUN  menuselect/menuselect --disable BUILD_NATIVE \
   --enable streamplayer \
   --enable chan_alsa \
+  --enable chan_console\
   --enable chan_sip\
   --enable res_snmp\
   --enable res_http_websocket\
@@ -70,11 +86,16 @@ RUN  wget http://sourceforge.net/projects/phpagi/files/latest/download \
 	&& rm -f download
 
 
-WORKDIR /
+WORKDIR /tmp
+RUN apt-get update && apt-get  install -y unzip  automake autoconf 
+RUN git clone -b asterisk13 https://github.com/oleg-krv/asterisk-chan-dongle.git
+WORKDIR /tmp/asterisk-chan-dongle
+RUN aclocal&&autoconf&&automake -a ||true
+RUN ./configure
+RUN make install
 
+WORKDIR /
 #Copy minimum configuration files so that it can start
 #COPY etc/* /etc/asterisk/
-
 #Start Asterisk in foreground
-CMD ["asterisk","-f"]
-#CMD sudo asterisk -f
+CMD ["asterisk","-vvvvvvvvf"]

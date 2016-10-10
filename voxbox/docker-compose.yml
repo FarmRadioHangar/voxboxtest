@@ -2,7 +2,10 @@ version: '2'
 
 services:
     static:
+      privileged: true
+      network_mode: "host"
       build: static
+      restart: always
       ports:
         - 80:80
     fconf:
@@ -15,19 +18,42 @@ services:
       network_mode: "host"
     asterisk:
       build: asterisk
-      privileged: true
       network_mode: "host"
+      privileged: true
+      restart: always
+      command: asterisk -f
+      ports:
+        - 5060:5060
       volumes:
-        - /data/asterisk/lib:/var/lib/asterisk
         - /data/asterisk/log:/var/log/asterisk
-        - /data/asterisk/etc:/etc/asterisk
+        - /home/pirate/asterisk/etc:/etc/asterisk
+        - /dev:/dev
     telegraf:
       build: telegraf
+      privileged: true
+      network_mode: "host"
       ports:
         - 8125/udp:8125/udp
         - 8092/udp:8092/udp
         - 8094:8094
       volumes:
         - /var/run/docker.sock:/var/run/docker.sock
+    backend:
+      build: backend
+      privileged: true
+      network_mode: "host"
+      restart: always
+      ports:
+        - 19998:19998
+      command: /bin/bash -c "redis-server --daemonize yes &&./sh/reload_server.sh"
+      volumes:
+        - /data/redis:/var/lib/redis
+        - ./backend/config:/usr/src/app/config
+        - ./backend/log:/usr/src/app/log
+        - ./backend/run:/usr/src/app/run
+        - ./backend/sh:/usr/src/app/sh
+        - ./backend/index.js:/usr/src/app/index.js
+      depends_on:
+        - asterisk
 
 
