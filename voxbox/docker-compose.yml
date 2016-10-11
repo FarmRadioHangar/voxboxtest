@@ -13,5 +13,6 @@ services:
         - /data/asterisk/log:/var/log/asterisk
         - ./asterisk/etc:/etc/asterisk
         - /dev:/dev
+        - /var/lock:/var/lock
 
 
