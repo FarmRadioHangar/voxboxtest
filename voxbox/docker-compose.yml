@@ -14,9 +14,27 @@ services:
         - ./asterisk/etc:/etc/asterisk
         - /dev:/dev
     static:
+      privileged: true
+      network_mode: "host"
       build: static
       restart: always
       ports:
         - 80:80
-
+    backend:
+      build: backend
+      privileged: true
+      network_mode: "host"
+      restart: always
+      ports:
+        - 19998:19998
+      command: /bin/bash -c "redis-server --daemonize yes &&./sh/reload_server.sh"
+      volumes:
+        - /data/redis:/var/lib/redis
+        - ./backend/config:/usr/src/app/config
+        - ./backend/log:/usr/src/app/log
+        - ./backend/run:/usr/src/app/run
+        - ./backend/sh:/usr/src/app/sh
+        - ./backend/index.js:/usr/src/app/index.js
+      depends_on:
+        - asterisk
 
