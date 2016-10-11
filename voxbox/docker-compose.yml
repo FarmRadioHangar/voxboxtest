@@ -11,7 +11,7 @@ services:
         - 5060:5060
       volumes:
         - /data/asterisk/log:/var/log/asterisk
-        - /home/pirate/asterisk/etc:/etc/asterisk
+        - ./etc:/etc/asterisk
         - /dev:/dev
 
 
