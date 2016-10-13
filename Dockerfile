@@ -31,6 +31,8 @@ RUN chmod +x /usr/local/bin/wrapdocker
 
 COPY ./voxbox /voxbox
 
+# Enable systemd init system in the container, so it never closes
+ENV INITSYSTEM on
 WORKDIR /voxbox
 
 COPY ./start /start
