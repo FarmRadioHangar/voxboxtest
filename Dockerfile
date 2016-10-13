@@ -9,14 +9,14 @@ RUN apt-get update && apt-get install -y \
     lxc \
     iptables\
 	openssh-server\
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    &&apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Docker from hypriot repos
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 37BBEE3F7AD95B3F && \
     echo "deb https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy main" > /etc/apt/sources.list.d/hypriot.list && \
     apt-get update && \
     apt-get install -y docker-hypriot docker-compose\
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    &&apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # here we set up the config for openSSH.
 RUN mkdir /var/run/sshd \
