@@ -32,7 +32,6 @@ services:
         - /data/redis:/var/lib/redis
         - ./backend/config:/usr/src/app/config
         - ./backend/log:/usr/src/app/log
-        - ./backend/run:/usr/src/app/run
         - ./backend/sh:/usr/src/app/sh
         - ./backend/index.js:/usr/src/app/index.js
       depends_on:
